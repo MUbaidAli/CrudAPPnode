@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .post {
+        background-color: aqua;
+        padding: 10px;
+        margin: 10px;
+      }
+      .flex {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Post</h1>
+    <div class="flex">
+      <% for(item of posts) {%>
+      <div class="post">
+        <small><%= item.id %></small>
+        <h3><%= item.name %></h3>
+        <p><%= item.post %></p>
+
+        <a href="http://localhost:8484/posts/<%= item.id %>">See In Details</a>
+        <a href="http://localhost:8484/posts/<%=item.id%>/edit">Edit</a>
+
+        <form
+          action="http://localhost:8484/posts/<%= item.id %>?_method=DELETE"
+          method="post"
+        >
+          <button>DELETE</button>
+        </form>
+      </div>
+
+      <%}%>
+    </div>
+
+    <a href="http://localhost:8484/posts/new">Add New Post</a>
+  </body>
+</html>
